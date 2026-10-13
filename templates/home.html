@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | NoteSpace{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero hero-modern">
+
+    <div class="hero-badge">
+        <span class="status-dot"></span>
+        YOUR PERSONAL LEARNING SPACE
+    </div>
+
+    <h2>
+        Learn Something.
+        <span>Build Everything.</span>
+    </h2>
+
+    <p>
+        Your ideas deserve a home. Organize your programming notes,
+        revisit important concepts, and turn everyday learning
+        into skills that last.
+    </p>
+
+    <div class="hero-actions">
+        <a href="/add/" class="hero-primary-btn">
+            <span aria-hidden="true">＋</span>
+            Create Your First Note
+        </a>
+
+        <a href="#subjects" class="hero-secondary-btn">
+            Explore Subjects
+            <span aria-hidden="true">↓</span>
+        </a>
+    </div>
+
+    <div class="hero-decoration hero-decoration-one"></div>
+    <div class="hero-decoration hero-decoration-two"></div>
+
+</section>
+
+
+<!-- ================= SUBJECT SECTION ================= -->
+
+<section class="learning-section" id="subjects">
+
+    <div class="section-heading">
+        <div>
+            <span class="section-eyebrow">YOUR KNOWLEDGE LIBRARY</span>
+            <h2>Explore Your Subjects<span>.</span></h2>
+            <p>Everything you learn, organized in one place.</p>
+        </div>
+
+        <a href="/add/" class="section-add-link">
+            <span aria-hidden="true">＋</span> Add a Note
+        </a>
+    </div>
+
+
+    <div class="subjects">
+
+        <!-- PYTHON -->
+
+        <a href="/python/" class="subject-card subject-python">
+
+            <div class="subject-card-top">
+                <div class="subject-icon">🐍</div>
+                <span class="subject-number">01</span>
+            </div>
+
+            <span class="subject-label">PROGRAMMING</span>
+
+            <h3>Python</h3>
+
+            <p>
+                Master variables, data types, loops, functions,
+                OOP, and the foundations of Python programming.
+            </p>
+
+            <div class="subject-card-bottom">
+                <span>Explore Python notes</span>
+                <span class="subject-arrow" aria-hidden="true"></span>
+            </div>
+
+        </a>
+
+
+        <!-- HTML -->
+
+        <a href="/html/" class="subject-card subject-html">
+
+            <div class="subject-card-top">
+                <div class="subject-icon">🌐</div>
+                <span class="subject-number">02</span>
+            </div>
+
+            <span class="subject-label">WEB STRUCTURE</span>
+
+            <h3>HTML</h3>
+
+            <p>
+                Understand HTML tags, semantic elements, forms,
+                tables, and the structure behind every webpage.
+            </p>
+
+            <div class="subject-card-bottom">
+                <span>Explore HTML notes</span>
+                <span class="subject-arrow" aria-hidden="true"></span>
+            </div>
+
+        </a>
+
+
+        <!-- CSS -->
+
+        <a href="/css/" class="subject-card subject-css">
+
+            <div class="subject-card-top">
+                <div class="subject-icon">🎨</div>
+                <span class="subject-number">03</span>
+            </div>
+
+            <span class="subject-label">WEB DESIGN</span>
+
+            <h3>CSS</h3>
+
+            <p>
+                Explore selectors, colors, Flexbox, Grid,
+                responsive layouts, animations, and modern design.
+            </p>
+
+            <div class="subject-card-bottom">
+                <span>Explore CSS notes</span>
+                <span class="subject-arrow" aria-hidden="true"></span>
+            </div>
+
+        </a>
+
+
+        <!-- JAVASCRIPT -->
+
+        <a href="/javascript/" class="subject-card subject-javascript">
+
+            <div class="subject-card-top">
+                <div class="subject-icon">⚡</div>
+                <span class="subject-number">04</span>
+            </div>
+
+            <span class="subject-label">WEB INTERACTIVITY</span>
+
+            <h3>JavaScript</h3>
+
+            <p>
+                Learn variables, functions, arrays, events,
+                DOM manipulation, and interactive web development.
+            </p>
+
+            <div class="subject-card-bottom">
+                <span>Explore JavaScript notes</span>
+                <span class="subject-arrow" aria-hidden="true"></span>
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MOTIVATION SECTION ================= -->
+
+<section class="learning-banner">
+
+    <div class="learning-banner-icon" aria-hidden="true">✦</div>
+
+    <div class="learning-banner-content">
+        <span class="section-eyebrow">A LITTLE REMINDER</span>
+        <h2>Small steps. Big progress.</h2>
+        <p>
+            Every concept you understand today makes tomorrow's
+            challenges a little easier. Keep learning, one note at a time.
+        </p>
+    </div>
+
+    <a href="/add/" class="banner-button">
+        Write a Note <span aria-hidden="true">→</span>
+    </a>
+
+</section>
+
+{% endblock %}

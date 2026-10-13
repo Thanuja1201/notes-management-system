@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Note | NoteSpace{% endblock %}
+
+{% block content %}
+<section class="form-page form-page-modern">
+
+    <div class="form-intro">
+        <a href="/{{ note.category }}/" class="breadcrumb-link">
+            <span aria-hidden="true">←</span>
+            {{ note.category|title }} Notes
+            <span aria-hidden="true">/</span> Edit
+        </a>
+
+        <div class="form-intro-badge">
+            <span class="form-badge-icon" aria-hidden="true">✎</span>
+            REFINE YOUR KNOWLEDGE
+        </div>
+
+        <h2>Edit Your <span>Note.</span></h2>
+        <p>Update your question, improve your explanation, or move this note to another subject. Your learning, your way.</p>
+    </div>
+
+    <div class="note-form-layout">
+
+        <aside class="form-side-panel edit-side-panel">
+            <div class="form-side-icon" aria-hidden="true">✎</div>
+            <span class="section-eyebrow">MAKE IT BETTER</span>
+
+            <h3>Review.<br>Refine.<br><span>Remember.</span></h3>
+
+            <p>Great notes grow with you. Make your explanations clearer and keep your knowledge up to date.</p>
+
+            <div class="edit-status-card">
+                <span class="edit-status-icon" aria-hidden="true">✓</span>
+                <div>
+                    <strong>Note selected</strong>
+                    <p>You're editing an existing study note.</p>
+                </div>
+            </div>
+
+            <div class="form-tip">
+                <span class="form-tip-icon" aria-hidden="true">💡</span>
+                <div>
+                    <strong>Revision tip</strong>
+                    <p>Try adding a practical example or simplifying any explanation that feels difficult to remember.</p>
+                </div>
+            </div>
+
+            <div class="form-side-decoration" aria-hidden="true">✦</div>
+        </aside>
+
+        <div class="note-form-card">
+            <div class="form-card-heading">
+                <div>
+                    <span class="section-eyebrow">UPDATE YOUR CONTENT</span>
+                    <h3>Make your changes</h3>
+                </div>
+                <span class="required-hint"><span>*</span> Required fields</span>
+            </div>
+
+            <form method="POST" class="note-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="category">
+                        Category <span class="required-star">*</span>
+                    </label>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">▦</span>
+
+                        <select id="category" name="category" required>
+                            <option value="python"
+                                {% if note.category == 'python' %}selected{% endif %}>
+                                Python
+                            </option>
+
+                            <option value="html"
+                                {% if note.category == 'html' %}selected{% endif %}>
+                                HTML
+                            </option>
+
+                            <option value="css"
+                                {% if note.category == 'css' %}selected{% endif %}>
+                                CSS
+                            </option>
+
+                            <option value="javascript"
+                                {% if note.category == 'javascript' %}selected{% endif %}>
+                                JavaScript
+                            </option>
+                        </select>
+                    </div>
+
+                    <small>Change the subject if this note belongs somewhere else.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="question">
+                        Question <span class="required-star">*</span>
+                    </label>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon input-icon-top" aria-hidden="true">Q</span>
+
+                        <input
+                            type="text"
+                            id="question"
+                            name="question"
+                            value="{{ note.question }}"
+                            maxlength="250"
+                            placeholder="Enter your question"
+                            required
+                        >
+                    </div>
+
+                    <small>Make sure your question is clear and easy to understand.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="answer">
+                        Answer <span class="required-star">*</span>
+                    </label>
+
+                    <div class="input-wrapper textarea-wrapper">
+                        <span class="input-icon input-icon-top" aria-hidden="true">A</span>
+
+                        <textarea
+                            id="answer"
+                            name="answer"
+                            rows="7"
+                            placeholder="Update your explanation here..."
+                            required
+                        >{{ note.answer }}</textarea>
+                    </div>
+
+                    <small>Keep your answer useful, readable, and easy to revise.</small>
+                </div>
+
+                <div class="form-actions form-actions-modern">
+                    <a href="/{{ note.category }}/" class="cancel-btn">
+                        <span aria-hidden="true">←</span> Cancel
+                    </a>
+
+                    <button type="submit" class="save-btn">
+                        <span aria-hidden="true">✓</span> Update Note
+                        <span aria-hidden="true" class="save-arrow">→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-bottom-note">
+        <span aria-hidden="true">✦</span>
+        Better notes today. Better understanding tomorrow.
+    </div>
+
+</section>
+{% endblock %}

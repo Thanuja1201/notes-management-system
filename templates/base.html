@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#10172a">
+    <meta name="description" content="A modern Notes Management System to organize your Python, HTML, CSS, and JavaScript study notes.">
+
+    <title>{% block title %}Notes Management | Learn Smarter{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="site-header">
+
+        <a href="/" class="brand" aria-label="Notes Management Home">
+            <span class="brand-icon" aria-hidden="true">✦</span>
+
+            <span class="brand-text">
+                <span class="brand-title">Note<span>Space</span></span>
+                <span class="brand-subtitle">YOUR PERSONAL LEARNING HUB</span>
+            </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="/" class="nav-link">
+                <span aria-hidden="true">⌂</span>
+                Home
+            </a>
+
+            <a href="/python/" class="nav-link">
+                <span aria-hidden="true">🐍</span>
+                Python
+            </a>
+
+            <a href="/html/" class="nav-link">
+                <span aria-hidden="true">🌐</span>
+                HTML
+            </a>
+
+            <a href="/css/" class="nav-link">
+                <span aria-hidden="true">🎨</span>
+                CSS
+            </a>
+
+            <a href="/javascript/" class="nav-link">
+                <span aria-hidden="true">⚡</span>
+                JavaScript
+            </a>
+
+            <a href="/add/" class="nav-add-btn">
+                <span aria-hidden="true">＋</span>
+                Add Note
+            </a>
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main id="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content">
+
+            <a href="/" class="footer-brand">
+                <span class="footer-logo" aria-hidden="true">✦</span>
+                NoteSpace
+            </a>
+
+            <p class="footer-tagline">
+                Capture your ideas. Organize your knowledge.
+                Build something amazing.
+            </p>
+
+            <div class="footer-tech">
+                <span>Python</span>
+                <span>Django</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <p class="footer-copyright">
+                © 2026 NoteSpace. Made for curious minds.
+            </p>
+
+        </div>
+
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

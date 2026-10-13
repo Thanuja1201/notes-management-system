@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a Note | NoteSpace{% endblock %}
+
+{% block content %}
+<section class="form-page form-page-modern">
+
+    <div class="form-intro">
+        <a href="/" class="breadcrumb-link">
+            <span aria-hidden="true">⌂</span> Home
+            <span aria-hidden="true">/</span> Create Note
+        </a>
+
+        <div class="form-intro-badge">
+            <span class="form-badge-icon" aria-hidden="true">✦</span>
+            YOUR PERSONAL KNOWLEDGE LIBRARY
+        </div>
+
+        <h2>Create a New <span>Note.</span></h2>
+        <p>Capture what you learn today. Build a collection of knowledge you'll be glad to revisit tomorrow.</p>
+    </div>
+
+    <div class="note-form-layout">
+
+        <aside class="form-side-panel">
+            <div class="form-side-icon" aria-hidden="true">✎</div>
+            <span class="section-eyebrow">A SPACE FOR IDEAS</span>
+            <h3>Learn it.<br>Write it.<br><span>Remember it.</span></h3>
+            <p>Turn your programming concepts into easy-to-revisit questions and answers.</p>
+
+            <div class="form-tip">
+                <span class="form-tip-icon" aria-hidden="true">💡</span>
+                <div>
+                    <strong>Quick tip</strong>
+                    <p>Write clear questions and explain answers in your own words. Simple notes make revision easier.</p>
+                </div>
+            </div>
+
+            <div class="form-side-decoration" aria-hidden="true">✦</div>
+        </aside>
+
+        <div class="note-form-card">
+            <div class="form-card-heading">
+                <div>
+                    <span class="section-eyebrow">NOTE DETAILS</span>
+                    <h3>What's on your mind?</h3>
+                </div>
+                <span class="required-hint"><span>*</span> Required fields</span>
+            </div>
+
+            <form method="POST" class="note-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="category">Category <span class="required-star">*</span></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">▦</span>
+                        <select id="category" name="category" required>
+                            <option value="">Choose a subject</option>
+                            <option value="python">Python</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="javascript">JavaScript</option>
+                        </select>
+                    </div>
+                    <small>Choose the subject this note belongs to.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="question">Question <span class="required-star">*</span></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon input-icon-top" aria-hidden="true">Q</span>
+                        <input
+                            type="text"
+                            id="question"
+                            name="question"
+                            placeholder="e.g. What is a Python function?"
+                            maxlength="250"
+                            required
+                        >
+                    </div>
+                    <small>Use a short, clear question that is easy to revise.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="answer">Answer <span class="required-star">*</span></label>
+                    <div class="input-wrapper textarea-wrapper">
+                        <span class="input-icon input-icon-top" aria-hidden="true">A</span>
+                        <textarea
+                            id="answer"
+                            name="answer"
+                            rows="7"
+                            placeholder="Write your explanation here...&#10;&#10;Include examples or important points whenever useful."
+                            required
+                        ></textarea>
+                    </div>
+                    <small>Explain the concept in your own words. Add examples where helpful.</small>
+                </div>
+
+                <div class="form-actions form-actions-modern">
+                    <a href="/" class="cancel-btn">
+                        <span aria-hidden="true">←</span> Cancel
+                    </a>
+                    <button type="submit" class="save-btn">
+                        <span aria-hidden="true">✓</span> Save Note
+                        <span aria-hidden="true" class="save-arrow">→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-bottom-note">
+        <span aria-hidden="true">✦</span>
+        Every note you create is another step forward.
+    </div>
+
+</section>
+{% endblock %}

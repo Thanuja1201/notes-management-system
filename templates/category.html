@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category }} Notes | NoteSpace{% endblock %}
+
+{% block content %}
+
+<section class="category-page category-modern">
+
+    <!-- PAGE INTRODUCTION -->
+
+    <div class="category-hero">
+
+        <div class="category-hero-content">
+
+            <a href="/" class="breadcrumb-link">
+                <span aria-hidden="true">⌂</span>
+                Home
+                <span aria-hidden="true">/</span>
+                Subjects
+            </a>
+
+            <span class="category-eyebrow">YOUR KNOWLEDGE LIBRARY</span>
+
+            <h2>{{ category }} <span>Notes</span></h2>
+
+            <p>
+                Revise important {{ category }} concepts, strengthen
+                your understanding, and keep moving forward.
+            </p>
+
+            <div class="category-hero-actions">
+                <a href="/add/" class="add-note-btn">
+                    <span aria-hidden="true">＋</span>
+                    Create New Note
+                </a>
+
+                <a href="/" class="category-back-btn">
+                    Explore Subjects <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="category-hero-decoration" aria-hidden="true">
+            <span class="category-decoration-icon">✦</span>
+            <span class="category-decoration-orbit"></span>
+        </div>
+
+    </div>
+
+
+    <!-- NOTES SECTION -->
+
+    <div class="notes-section">
+
+        <div class="notes-section-header">
+
+            <div>
+                <span class="section-eyebrow">YOUR STUDY MATERIAL</span>
+                <h3>All Your Notes</h3>
+                <p>Questions and answers, all in one place.</p>
+            </div>
+
+            {% if notes %}
+            <div class="notes-count">
+                <span class="notes-count-dot"></span>
+                Notes available
+            </div>
+            {% endif %}
+
+        </div>
+
+
+        {% if notes %}
+
+        <div class="notes-table-container">
+
+            <table class="notes-table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for note in notes %}
+
+                    <tr>
+
+                        <td>
+                            <div class="question-cell">
+                                <span class="question-icon" aria-hidden="true">Q</span>
+
+                                <strong>{{ note.question }}</strong>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="answer-cell">{{ note.answer }}</div>
+                        </td>
+
+                        <td>
+                            <div class="note-actions">
+
+                                <a
+                                    href="{% url 'edit_note' note.id %}"
+                                    class="note-action-edit"
+                                    aria-label="Edit note: {{ note.question }}"
+                                >
+                                    <span aria-hidden="true">✎</span>
+                                    Edit
+                                </a>
+
+                                <a
+                                    href="{% url 'delete_note' note.id %}"
+                                    class="note-action-delete"
+                                    aria-label="Delete note: {{ note.question }}"
+                                    onclick="return confirm('Are you sure you want to delete this note?');"
+                                >
+                                    <span aria-hidden="true">×</span>
+                                    Delete
+                                </a>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <!-- EMPTY STATE -->
+
+        <div class="empty-notes empty-state-modern">
+
+            <div class="empty-state-icon" aria-hidden="true">✎</div>
+
+            <span class="section-eyebrow">A FRESH START</span>
+
+            <h3>Your notebook is waiting!</h3>
+
+            <p>
+                You haven't added any {{ category }} notes yet.
+                Start collecting useful concepts and build your own
+                learning library.
+            </p>
+
+            <a href="/add/" class="add-note-btn">
+                <span aria-hidden="true">＋</span>
+                Create Your First Note
+            </a>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- FOOTER NAVIGATION -->
+
+        <div class="category-bottom-nav">
+
+            <a href="/" class="back-home">
+                Back to Home
+            </a>
+
+            <a href="/add/" class="bottom-add-link">
+                Add another note <span aria-hidden="true">→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
